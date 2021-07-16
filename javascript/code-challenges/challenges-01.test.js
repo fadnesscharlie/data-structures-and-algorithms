@@ -40,7 +40,6 @@ Write a function named `allUpperCase` that takes an array of strings, and return
 
 Use `forEach` to loop over the input array. The modified strings should each be added into a local array. Return that local array.
 ------------------------------------------------------------------------------------------------ */
-
 const allUpperCase = (arr) => {
   // Solution code here...
   let allArray =[];
@@ -66,7 +65,6 @@ const greeting = (word) => {
   let upperCase = word.toUpperCase();
   return upperCase + '!';
 };
-
 const speaker = (words, callback) => {
   // Solution code here...
   let allArray = [];
@@ -226,3 +224,4 @@ describe('Testing challenge 7', () => {
     expect(fizzbuzz(inputs).length).toStrictEqual(16);
   });
 });
+
