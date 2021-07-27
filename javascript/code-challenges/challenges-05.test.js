@@ -144,7 +144,7 @@ const reversedString = (str) => {
   });
   return putTogether;
 };
-
+ 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
