@@ -138,13 +138,11 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 
 const reversedString = (str) => {
   // Solution code here...
-  let reversed = str.split('');
-  let putTogether = reversed.reduce((acc, value) =>{
+  return str.split('').reduce((acc, value) =>{
     return value + acc;
-  });
-  return putTogether;
+  }, '');
 };
- 
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 7 - Stretch Goal
 
