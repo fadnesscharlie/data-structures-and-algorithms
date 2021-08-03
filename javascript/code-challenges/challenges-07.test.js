@@ -186,7 +186,7 @@ For example:
   removeEvenValues(integers);
   console.log(integers) will print [1, 3, 5]
 ------------------------------------------------------------------------------------------------ */
-
+ 
 const removeEvenValues = (arr) => {
   // Solution code here...
 };
