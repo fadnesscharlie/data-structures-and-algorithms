@@ -158,16 +158,20 @@ const divisibleByFiveTwoToThePower = (input) => {
   
   Write a function named findShortest that, given the Star Wars data from Challenge 6, uses any combination of filter, map and reduce to return the name of the character who is the shortest in height.
   ------------------------------------------------------------------------------------------------ */
+// let findShortest = (data) => {
+//   // Solution code here...
+//   let height = 0;
+//   data.map(min => {
+//     if (min.height) {
+//       height = min.height < height;
+//     }
+//   });
+//   return height;
+// };
+
 let findShortest = (data) => {
-  // Solution code here...
-  let height = 0;
-  data.map(min => {
-    if (min.height) {
-      height = min.height < height;
-    }
-  });
-  return height;
-};
+  return data.reduce((acc, cur) => Number(acc.height) < Number(cur.height) ? acc : cur).name;
+}
 
   /* ------------------------------------------------------------------------------------------------
   TESTS
