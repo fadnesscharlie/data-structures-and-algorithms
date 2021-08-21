@@ -71,7 +71,8 @@ const validateEmail = (email) => {
   // Solution code here...
   // return /^([A-Za-z0-9][.]|[A-Za-z0-9])[^.]@[a-zA-Z]{1,}[_.]com|net|org/g.test(email);
   // return /^([a-z0-9_\.-]+)[^.]@([\da-z\.-]+)\.([a-z\.]{2,5})$/.test(email);
-  return /^([a-z0-9_\.-]+.{1})[^.]@([\da-z\.-]+)\.(com|net|org)$/.test(email);
+  // return /^([a-z0-9_\.-]+.{1})[^.]@([\da-z\.-]+)\.(com|net|org)$/.test(email);
+  return /^[A-Za-z0-9]+\.?[A-Za-z0-9]+?@[A-Za-z0-9]+.(com|net|org)$/g.test(email);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -98,7 +99,8 @@ Return either true or false.
 const validatePhoneNumber = (phoneNumber) => {
   // Solution code here...
   // return /([0-9-]|([0-9-])[0-9]{7})/g.test(phoneNumber);
-  return /[0-9]|([0-9-])\d{4,7}/g.test(phoneNumber);
+  // return /[0-9]|([0-9-])\d{4,7}/g.test(phoneNumber);
+  return /^(\(\d{3}\)|\d{3})[- ]?\d{3}[- ]?\d{4}$/g.test(phoneNumber);
 };
 
 /* ------------------------------------------------------------------------------------------------
