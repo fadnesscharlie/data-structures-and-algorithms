@@ -1,0 +1,168 @@
+'use strict';
+
+const Node = require('./node.js');
+const n1 = new Node(100)
+// console.log(n1)
+//Node { value: 100, next: null }
+
+const n2 = new Node(200)
+
+n1.next = n2;
+// console.log(n1)
+// Node { value: 100, next: Node { value: 200, next: null } }
+
+// --------------------------------------------------
+
+class LinkedList {
+  constructor() {
+    this.head = null;
+    this.size = 0;
+  }
+
+  // Insert first node
+  insertFirst(data) {
+    this.head = new Node(data, this.head)
+    this.size++
+  }
+
+  // Insert last node
+  insertLast(data) {
+    let node = new Node(data)
+    let current;
+
+    // If empty, make head
+    if(!this.head) {
+      this.head = node;
+    } else {
+      current = this.head;
+
+      while(current.next) {
+        current = current.next;
+      }
+      current.next = node
+    }
+
+    this.size++;
+  }
+
+  // Insert at index
+  insertAt(data, index){
+
+    // If index is out of range
+    if(index > 0 && index > this.size) {
+      return;
+    }
+
+    // If first index
+    if(index === 0) {
+      // this.insertFirst(data)
+      this.head - new Node(data, this.head);
+      return;
+    }
+
+    const node = new Node(data);
+    let current, previous;
+
+    // Set current to first
+    current = this.head;
+    let count = 0;
+
+    // ---- Insert 500 at index 2 ----
+    // REFERENCE ---> 100, 200, 300, 400, 500
+
+    while (count < index) {
+      // previous = 200
+      // current = head
+      previous = current; // node before index
+      count++; // how many nodes did it go through
+      // current.next = 300
+      current = current.next; // Node after index
+    }
+
+    // set the head to node
+    // link node.next to next linked list
+    // current = 300
+    // node = 500
+    node.next = current; 
+
+    // previous = 200
+    // node = 500
+    previous.next = node;
+
+    this.size++;
+  }
+
+  // Get at index
+  getAt(index) {
+    let current = this.head;
+    let count = 0;
+
+    while(current) {
+      if(count === index) {
+        console.log(current.data)
+      }
+      count++;
+      current = current.next;
+    }
+    return null;
+  }
+
+  // Remote at index
+  remoteAt(index) {
+    if( index > 0 && index > this.size) {
+      return
+    }
+
+    let current = this.head
+    let previous;
+    let count = 0;
+
+    // Remove first
+    if (index === 0) {
+      // Move the head to the next node
+      this.head = current.next
+    } else {
+      while (count < index) {
+        count++; // goes through
+        previous = current; // Set the last to this
+        current = current.next; // set this node to the next instead
+      }
+      previous.next = current.next
+    }
+
+    this.size--;
+  }
+
+  // Clear list
+  clearList() {
+    this.head = null;
+    this.size = 0;
+  }
+
+  // Print List data
+  printListData() {
+    let current = this.head;
+
+    while(current) {
+      console.log(current.data)
+      current = current.next;
+    }
+  }
+}
+
+const ll = new LinkedList();
+ll.insertFirst(100);
+ll.insertFirst(200);
+ll.insertFirst(300);
+ll.insertLast(400);
+ll.insertAt(500, 2);
+ll.getAt(1);
+
+ll.remoteAt(1);
+
+// ll.clearList();
+
+console.log('---')
+
+ll.printListData();
+console.log(ll)
