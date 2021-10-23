@@ -1,6 +1,5 @@
 "use strict";
 
-const { thisExpression } = require("@babel/types");
 const Node = require("./node.js");
 
 class LinkedList {
@@ -15,37 +14,9 @@ class LinkedList {
 
     while (current) {
       console.log("print Data: ", current.data);
-      // console.log(this.size);
+      console.log(this.size);
       current = current.next;
     }
-  }
-
-  kthFromEnd(k) {
-    let current = this.head;
-    let count = 0;
-    let kthIndex = this.size - k;
-    kthIndex--;
-    let negative = Math.sign(k)
-
-    // If numbers are 0 or positive
-    if (negative === 1 || negative === 0) {
-      while(current) {
-  
-        // if k and length are the same
-        if (current.next === null && kthIndex === count) {
-          return console.log(`Last Value: ${k} ${current.data}`)
-        }
-
-        if (kthIndex === count) {
-          console.log(`kth Value: ${k} ${current.data}`)
-        }
-        count++;
-        current = current.next;
-      }
-    } else {
-      return console.log('Please enter a valid number')
-    }
-    return null;
   }
 
   insertMiddleBefore(value) {
@@ -197,17 +168,13 @@ class LinkedList {
 const ll = new LinkedList();
 ll.append(100);
 ll.append(200);
-// ll.append(300);
-// ll.append(400);
-// ll.append(500);
-// ll.append(600);
+ll.append(300);
+ll.append(400);
+ll.append(500);
 //            value, newValue
-// ll.insertBefore(400, 800);
-// ll.insertAfter(200, 800);
-ll.kthFromEnd(1);
-ll.kthFromEnd(0);
-// ll.kthFromEnd(6);
-// ll.kthFromEnd(7);
+ll.insertBefore(400, 800);
+ll.insertAfter(200, 800);
+ll.append(600);
 
 // console.log(ll)
 // console.log('----------------------')
