@@ -8,40 +8,25 @@ describe("Linked List", () => {
     expect(list.head).toBeNull();
   });
 
-  it('should return null if kth value is not in the list', () => {
+  it('should return the values from a linked list', () => {
     let ll = new LL();
     ll.append(100);
-    ll.append(200);
     ll.append(300);
-    ll.append(400);
     ll.append(500);
-    expect(ll.kthFromEnd(10)).toBeNull();
-  })
+    ll.append(700);
+    ll.append(900);
+    
+    let ll2 = new LL();
+    ll2.append(200);
+    ll2.append(400);
+    ll2.append(600);
+    ll2.append(800);
 
-  it('should return the value is the list is the same as k', () => {
-    let ll = new LL();
-    ll.append(100);
-    ll.append(200);
-    ll.append(300);
-    ll.append(400);
-    ll.append(500);
-    expect(ll.kthFromEnd(0)).toEqual(100);
-    expect(ll.kthFromEnd(1)).toEqual(200);
+    let ll3 = new LL();
+    let zipped = ll3.zipLists(ll, ll2);
+    console.log('zipped list',zipped)
+    expect(ll3.zipLists(ll, ll2)).toBeDefined();
+    expect(zipped.next.next.data).toEqual(300);
   })
+})
 
-  it('should be true if list is size of 1', () => {
-    let ll = new LL;
-    ll.append(100);
-    expect(ll.kthFromEnd(0)).toBeDefined();
-  })
-
-  it('should return the value if k is less than list size', () => {
-    let ll = new LL();
-    ll.append(100);
-    ll.append(200);
-    ll.append(300);
-    ll.append(400);
-    ll.append(500);
-    expect(ll.kthFromEnd(2)).toBeDefined();
-  })
-});

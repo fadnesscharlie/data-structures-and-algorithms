@@ -7,6 +7,10 @@ Here we are creating a zipped linked list, in doing so we want to:
   - Then make list two apart of the list
   - Then back to the first, etc
 
+## WhiteBoard
+
+![whiteboard](img/zip-two-linked-list.png)
+
 ## Challenge
 
 We want to take in two linked list and zip them, meaning combine them but in a zig zag format.
