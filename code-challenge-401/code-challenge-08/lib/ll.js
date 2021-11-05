@@ -62,10 +62,10 @@ const zipLists = (list1,list2) => {
   zippedList.append(c2.data);
 
   while(c1.next&&c2.next !== null){
-    next1 = c1.next; //temp
+    next1 = c1.next; // Holding the data for the list
     next2 = c2.next;
-    c1.next = c2;
-    c2.next = next1;
+    c1.next = c2; // attach list2 data to list 1's head
+    c2.next = next1; // attach list 1's data to list 2's
     c1 = next1;
     c2 = next2;
     zippedList.append(c1.data);
