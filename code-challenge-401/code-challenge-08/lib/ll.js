@@ -1,7 +1,7 @@
 "use strict";
 
 const Node = require("./node.js");
-const LL = require("../../ll-info-master.js");
+const LL = require("../../Master-Files/ll-info-master.js");
 
 class LinkedList {
   constructor() {
