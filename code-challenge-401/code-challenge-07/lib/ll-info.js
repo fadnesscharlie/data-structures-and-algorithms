@@ -19,6 +19,88 @@ class LinkedList {
     this.size = 0;
   }
 
+  kthFromEnd(k) {
+    let current = this.head;
+    let count = 0;
+    let kthIndex = this.size - k;
+    kthIndex--;
+    let negative = Math.sign(k)
+
+    // If numbers are 0 or positive
+    if (negative === 1 || negative === 0) {
+      while(current) {
+  
+        // if k and length are the same
+        if (current.next === null && kthIndex === count) {
+          return console.log(`Last Value: ${k} ${current.data}`)
+        }
+
+        if (kthIndex === count) {
+          console.log(`kth Value: ${k} ${current.data}`)
+        }
+        count++;
+        current = current.next;
+      }
+    } else {
+      return console.log('Please enter a valid number')
+    }
+    return null;
+  }
+
+  insertMiddleBefore(value) {
+    let node = new Node(value);
+    if (!this.head) {
+      this.head = node;
+      return this;
+    }
+    if (value) {
+      let previous;
+      let current = this.head;
+      if (this.size === 0) {
+        return;
+      }
+      let middle = Math.floor(this.size);
+      if (middle % 2 === 1) {
+        middle++;
+      }
+      let middleNow = middle / 2;
+      for (let i = 0; i < middleNow; i++) {
+        if (i === middleNow - 1) {
+          node.next = current;
+          previous.next = node;
+        }
+        previous = current;
+        current = current.next;
+      }
+    }
+  }
+
+  insertMiddleAfter(value) {
+    let node = new Node(value);
+    if (!this.head) {
+      this.head = node;
+      return this;
+    }
+    if (value) {
+      let current = this.head;
+      if (this.size === 0) {
+        return;
+      }
+      let middle = Math.floor(this.size);
+      if (middle % 2 === 1) {
+        middle++;
+      }
+      let middleNow = middle / 2;
+      for (let i = 0; i < middleNow; i++) {
+        if (i === middleNow - 1) {
+          current.next = node;
+          node = current.next;
+        }
+        current = current.next;
+      }
+    }
+  }
+
   // Insert first node
   insertFirst(data) {
     this.head = new Node(data, this.head)

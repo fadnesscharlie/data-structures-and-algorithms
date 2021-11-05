@@ -7,6 +7,9 @@ Here we are creating a linked list, in doing so we want to:
   - Where k that is greater then the list
   - Where k is a positive number
 
+## WhiteBoard
+
+![White Board](img/kth-value-from-tail-in-linked-list.png)
 
 ## Challenge
 
