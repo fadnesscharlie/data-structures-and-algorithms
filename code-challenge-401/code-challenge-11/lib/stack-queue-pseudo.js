@@ -37,7 +37,13 @@ let myPseudoQueue = new PseudoQueue();
 myPseudoQueue.enqueue(10);
 myPseudoQueue.enqueue(15);
 myPseudoQueue.enqueue(20);
+myPseudoQueue.enqueue(25);
+myPseudoQueue.enqueue(30);
+myPseudoQueue.enqueue(35);
 console.log('first', myPseudoQueue)
+console.log(myPseudoQueue.dequeue());
+console.log(myPseudoQueue.dequeue());
+console.log(myPseudoQueue.dequeue());
 console.log(myPseudoQueue.dequeue());
 console.log(myPseudoQueue.dequeue());
 console.log(myPseudoQueue.dequeue());

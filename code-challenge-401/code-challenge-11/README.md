@@ -1,11 +1,13 @@
 # Challenge Summary
-<!-- Description of the challenge -->
+
+We want to use the functionality of a queue, but use stack functions to create a first in and first out format.
 
 ## Whiteboard Process
-<!-- Embedded whiteboard image -->
+![whiteboard](img/stack-queue-pseudo.png)
 
 ## Approach & Efficiency
-<!-- What approach did you take? Why? What is the Big O space/time for this approach? -->
+The big o for this is bigO(n^2).
+
 
 ## Solution
-<!-- Show how to run your code, and examples of it in action -->
+By running `node stack-queue-pseudo.js` in the root folder of lib, we can run the code and see our results.
