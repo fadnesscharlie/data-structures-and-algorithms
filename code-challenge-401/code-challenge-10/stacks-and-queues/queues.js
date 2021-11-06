@@ -4,14 +4,13 @@ let Node = require('../../Master-Files/node.js')
 
 class Queues {
   constructor() {
-    // this.queue = {};
     this.first = 0;  
-    // this.tail = 0;
     this.size = 0;
   }
 
   enqueue(data) {
     let node = new Node(data)
+    
     if(!this.first) {
       this.first = node;
     } else {
@@ -21,9 +20,6 @@ class Queues {
       }
       new1.next = node;
     }
-
-
-    // this.queue[this.tail++] = node
   }
 
   dequeue() {
