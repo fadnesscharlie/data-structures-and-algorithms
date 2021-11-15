@@ -85,8 +85,20 @@ describe('Binary Tree Traversal', () => {
 
     it('preOrder properly traverses and returns result', () => {
         let preOrder = tree.preOrder();
-        console.log(preOrder);
+        // console.log(preOrder);
         expect(preOrder).toEqual(preRes);
+    });
+
+    it('inOrder properly traverses and returns result', () => {
+        let inOrder = tree.inOrder();
+        // console.log(inOrder);
+        expect(inOrder).toEqual(inRes);
+    });
+
+    it('postOrder properly traverses and returns result', () => {
+        let postOrder = tree.postOrder();
+        // console.log(postOrder);
+        expect(postOrder).toEqual(postRes);
     });
 });
 
@@ -94,16 +106,29 @@ describe('Binary Search Tree', () => {
     it('Adds a node in the furthest right position', () => {
         searchTree.add(17);
         let correct = searchTree.root.right.right.value
-        console.log('From Testing', correct);
+        // console.log('From Testing', correct);
         expect(correct).toEqual(17)
     })
 
-    // it('Adds a node in the furthest left position', () => {
-    //     searchTree.add(8);
-    //     let correct = searchTree.root.left.left.right.left.left.value
-    //     expect(correct).toEqual(8)
+    it('Adds a node in the furthest left position', () => {
+        searchTree.add(3);
+        let correct = searchTree.root.left.value
+        // console.log('correct', correct)
+        expect(correct).toEqual(3)
 
-    // })
+    })
+
+    it('should contain the value', () => {
+        let contained = searchTree.contain(3)
+        console.log('test contained',contained)
+        expect(contained).toBeTruthy();  
+    })
+
+    it('should not contain the value', () => {
+        let contained = searchTree.contain(90)
+        console.log('test contained',contained)
+        expect(contained).toBeFalsy();  
+    })
 })
 
 /*
