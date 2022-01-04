@@ -4,7 +4,7 @@
   "description": "Data Structures, Algorithms, Code Challenges",
   "main": "index.js",
   "jest": {
-    "testPathIgnorePatterns": ["cc-01", "cc-02", "cc-03", "cc-05", "cc-06", "cc-07", "cc-08", "cc-10", "cc-11", "cc-12", "cc-13", "cc-15", "cc-16", "cc-17", "cc-18", "cc-26"]
+    "testPathIgnorePatterns": ["cc-01", "cc-02", "cc-03", "cc-05", "cc-06", "cc-07", "cc-08", "cc-10", "cc-11", "cc-12", "cc-13", "cc-15", "cc-16", "cc-17", "cc-18", "cc-26", "cc-27"]
   },
   "scripts": {
     "get-challenge": "`which bash` ./code-challenges/bin/get-challenge.sh",
