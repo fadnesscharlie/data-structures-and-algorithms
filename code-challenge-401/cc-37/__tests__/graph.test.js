@@ -1,5 +1,5 @@
 const {Graph} = require('../lib/graph')
-const {getPriceTravel} = require('../lib/graph')
+// const {getPriceTravel} = require('../lib/graph')
 
 const graph = new Graph();
 
@@ -9,7 +9,6 @@ const Metroville = graph.addVertex("Metroville");
 const Monstropolis = graph.addVertex("Monstropolis");
 const Narnia = graph.addVertex("Narnia");
 const Naboo = graph.addVertex("Naboo");
-console.log('Pandora:', Pandora);
 
 graph.addDirectedEdge(Pandora, Arendelle, 150);
 graph.addDirectedEdge(Pandora, Metroville, 82);
@@ -33,7 +32,11 @@ graph.addDirectedEdge(Naboo, Monstropolis, 73);
 
 describe("Return Flights", () => {
   it("should return true and cost amount", () => {
-    let result = getPriceTravel(Pandora, Metroville, Naboo)
+    let result = graph.getPriceTravel(Pandora, Metroville, Naboo)
     expect(result).toBe('Cost of Flight would be: 108');
   });
+  it('should return false', () => {
+    let result = graph.getPriceTravel(Pandora, Narnia, Monstropolis)
+    expect(result).toBe('Could not connect your flights!')
+  })
 });

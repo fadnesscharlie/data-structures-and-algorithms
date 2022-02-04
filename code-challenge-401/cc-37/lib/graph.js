@@ -1,5 +1,5 @@
-'use strict';
-const util = require('util');
+"use strict";
+const util = require("util");
 
 // *********** INSTRUCTIONS ************* //
 /*
@@ -26,11 +26,10 @@ size
   - Returns the total number of nodes in the graph
 */
 
-
 // Vertex = Node
 class Vertex {
   constructor(value) {
-    this.value = value
+    this.value = value;
   }
 }
 
@@ -53,7 +52,7 @@ class Graph {
   addVertex(value) {
     // - Arguments: value
     // - Returns: The added node
-    let vertex = new Vertex(value)
+    let vertex = new Vertex(value);
     // console.log('Adding new Vertex with value: ', value);
     // - Add a node to the graph
     this.adjacencyList.set(vertex, []);
@@ -62,8 +61,11 @@ class Graph {
 
   addDirectedEdge(startVertex, endVertex, weight = 0) {
     // console.log(`Creating new edge with ${startVertex} and ${endVertex}`, util.inspect(startVertex))
-    if (!this.adjacencyList.has(startVertex) || !this.adjacencyList.has(endVertex)) {
-      throw new Error('__ERROR__ Invalid Vertices');
+    if (
+      !this.adjacencyList.has(startVertex) ||
+      !this.adjacencyList.has(endVertex)
+    ) {
+      throw new Error("__ERROR__ Invalid Vertices");
     }
 
     const adjacencies = this.adjacencyList.get(startVertex);
@@ -75,7 +77,7 @@ class Graph {
     // - Returns a collection of edges connected to the given node
     // - Include the weight of the connection in the returned collection
     if (!this.adjacencyList.has(vertex)) {
-      throw new Error('__ERROR__ Invalid Vertex', vertex);
+      throw new Error("__ERROR__ Invalid Vertex", vertex);
     }
 
     return [...this.adjacencyList.get(vertex)];
@@ -93,10 +95,7 @@ class Graph {
     return this.adjacencyList.size();
   }
 
-  
-
   bfs(startNode) {
-
     const queue = [];
     const visitedNodes = new Set();
 
@@ -104,13 +103,11 @@ class Graph {
     visitedNodes.add(startNode);
 
     while (queue.length) {
-
       const currentNode = queue.shift();
 
       const neighbors = this.getNeighbors(currentNode);
 
       for (let neighbor of neighbors) {
-
         const neighborNode = neighbor.vertex;
 
         if (visitedNodes.has(neighborNode)) {
@@ -137,68 +134,68 @@ class Graph {
     */
   }
 
+  getPriceTravel(startingVertex, layover, endingVertex) {
+    let startNeighbors = this.getNeighbors(startingVertex);
+    let layoverNeighbors;
+    if (layover) layoverNeighbors = this.getNeighbors(layover);
+    let okToTravel = false;
+    let totalCost = 0;
+
+    function findCost(start, stop) {
+      if (layover) okToTravel = false;
+      start.forEach((place) => {
+        if (place.vertex.value === stop.value) {
+          totalCost = totalCost + place.weight;
+          if (place.weight) okToTravel = true;
+        }
+      });
+    }
+    if (layover === null) {
+      findCost(startNeighbors, endingVertex);
+    } else if (layover) {
+      findCost(startNeighbors, layover);
+      findCost(layoverNeighbors, endingVertex);
+    }
+    if (okToTravel) {
+      return `Cost of Flight would be: ${totalCost}`;
+    } else return "Could not connect your flights!";
+  }
 }
 
-function getPriceTravel(startingVertex, layover, endingVertex) {
-  let startNeighbors = graph.getNeighbors(startingVertex)
-  let layoverNeighbors;
-  if (layover) layoverNeighbors = graph.getNeighbors(layover)
-  let okToTravel = false
-  let totalCost = 0;
+// const graph = new Graph();
 
-  function findCost (start, stop) {
-    if (layover) okToTravel = false
-    start.forEach(place => {
-      if (place.vertex.value === stop.value) {
-        totalCost = totalCost + place.weight
-        if(place.weight) okToTravel = true
-      }
-    })
-  }
-  if (layover === null ) {
-    findCost(startNeighbors, endingVertex)
-  } else if (layover) {
-    findCost(startNeighbors, layover)
-    findCost(layoverNeighbors, endingVertex)
-  }
-  if (okToTravel) {
-    return `Cost of Flight would be: ${totalCost}`
-  } else return 'Could not connect your flights!'
-}
+// const Pandora = graph.addVertex("Pandora");
+// const Arendelle = graph.addVertex("Arendelle");
+// const Metroville = graph.addVertex("Metroville");
+// const Monstropolis = graph.addVertex("Monstropolis");
+// const Narnia = graph.addVertex("Narnia");
+// const Naboo = graph.addVertex("Naboo");
 
-const graph = new Graph();
-
-const Pandora = graph.addVertex('Pandora');
-const Arendelle = graph.addVertex('Arendelle');
-const Metroville = graph.addVertex('Metroville');
-const Monstropolis = graph.addVertex('Monstropolis');
-const Narnia = graph.addVertex('Narnia');
-const Naboo = graph.addVertex('Naboo');
-
-graph.addDirectedEdge(Pandora, Arendelle, 150);
-graph.addDirectedEdge(Pandora, Metroville, 82);
-graph.addDirectedEdge(Arendelle, Pandora, 150);
-graph.addDirectedEdge(Arendelle, Metroville, 99);
-graph.addDirectedEdge(Arendelle, Monstropolis, 42);
-graph.addDirectedEdge(Metroville, Pandora, 82);
-graph.addDirectedEdge(Metroville, Arendelle, 99);
-graph.addDirectedEdge(Metroville, Monstropolis, 105);
-graph.addDirectedEdge(Metroville, Naboo, 26);
-graph.addDirectedEdge(Metroville, Narnia, 37);
-graph.addDirectedEdge(Monstropolis, Arendelle, 42);
-graph.addDirectedEdge(Monstropolis, Metroville, 105);
-graph.addDirectedEdge(Monstropolis, Naboo, 73);
-graph.addDirectedEdge(Narnia, Metroville, 37);
-graph.addDirectedEdge(Narnia, Naboo, 250);
-graph.addDirectedEdge(Naboo, Narnia, 250);
-graph.addDirectedEdge(Naboo, Metroville, 26);
-graph.addDirectedEdge(Naboo, Monstropolis, 73);
+// graph.addDirectedEdge(Pandora, Arendelle, 150);
+// graph.addDirectedEdge(Pandora, Metroville, 82);
+// graph.addDirectedEdge(Arendelle, Pandora, 150);
+// graph.addDirectedEdge(Arendelle, Metroville, 99);
+// graph.addDirectedEdge(Arendelle, Monstropolis, 42);
+// graph.addDirectedEdge(Metroville, Pandora, 82);
+// graph.addDirectedEdge(Metroville, Arendelle, 99);
+// graph.addDirectedEdge(Metroville, Monstropolis, 105);
+// graph.addDirectedEdge(Metroville, Naboo, 26);
+// graph.addDirectedEdge(Metroville, Narnia, 37);
+// graph.addDirectedEdge(Monstropolis, Arendelle, 42);
+// graph.addDirectedEdge(Monstropolis, Metroville, 105);
+// graph.addDirectedEdge(Monstropolis, Naboo, 73);
+// graph.addDirectedEdge(Narnia, Metroville, 37);
+// graph.addDirectedEdge(Narnia, Naboo, 250);
+// graph.addDirectedEdge(Naboo, Narnia, 250);
+// graph.addDirectedEdge(Naboo, Metroville, 26);
+// graph.addDirectedEdge(Naboo, Monstropolis, 73);
 
 // console.log('GET PRICE TRAVEL')
 // console.log(' ')
-// console.log('GetPriceTravel Fucntion Result: ',getPriceTravel(Pandora, Narnia, Monstropolis));
-// console.log('GetPriceTravel Fucntion Result: ',getPriceTravel(Pandora, Metroville, Naboo));
+// console.log('GetPriceTravel Fucntion Result: ',graph.getPriceTravel(Pandora, Narnia, Monstropolis));
+// console.log('GetPriceTravel Fucntion Result: ',graph.getPriceTravel(Pandora, Metroville, Naboo));
 // console.log('-------------')
+
 // getNeighbors()
 // let neighborCheck = graph.getNeighbors(Pandora);
 // console.log('getNeighbors(ten) ', neighborCheck);
@@ -212,4 +209,4 @@ graph.addDirectedEdge(Naboo, Monstropolis, 73);
 // console.log('BFS Traversal with Vertex 10 as starter', util.inspect(graph.bfs(ten), false, null, true));
 // console.log(util.inspect(graph.dfs(ten), false, null, true));
 
-module.exports = {Graph, getPriceTravel};
+module.exports = { Graph };
